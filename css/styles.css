@@ -1,0 +1,280 @@
+a {
+  text-decoration: none;
+  color: #666586;
+  font-weight: 600;
+}
+.hero-bg {
+  background-color: #4498C8;
+  box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.3);
+}
+.lead {
+  font-size: 24px;
+}
+form {
+  width: 100%;
+}
+
+.form-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+label {
+  margin-bottom: 11px;
+  display: block;
+}
+
+.form-group {
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.form-control {
+  /* border: 1px solid rgba(255, 255, 255, 0.5); */
+  border-radius: 5px;
+  display: block;
+  width: 100%;
+  height: 45px;
+  background: 0 0;
+  padding: 0 19px;
+  color: #000;
+  font-size: 17px;
+  background-color: #fff;
+}
+
+.form-control.error {
+  border-color: #ff0000 !important;
+  background: url(../images/error.png) no-repeat center right 19px;
+  background-color: #fff;
+}
+
+.form-control.valid {
+  background: url(../images/valid.png) no-repeat center right 19px;
+  background-color: #fff;
+}
+
+.form-error {
+  margin-top: 10px;
+  display: inline-block;
+}
+
+button {
+  border: none;
+  width: 100%;
+  height: 46px;
+  border-radius: 22.5px;
+  margin: auto;
+  margin-top: 40px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background: #fff;
+  color: #000;
+  text-transform: uppercase;
+  font-size: 17px;
+  overflow: hidden;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  position: relative;
+  -webkit-transition-property: color;
+  transition-property: color;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+}
+
+button:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #0d6efd;
+  -webkit-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transform-origin: 50%;
+  transform-origin: 50%;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+
+button:hover {
+  color: #fff;
+}
+
+button:hover:before {
+  -webkit-transform: scaleX(1);
+  transform: scaleX(1);
+}
+
+.grid {
+  display: grid;
+  grid-template-rows: repeat(var(--bs-rows, 1), 1fr);
+  grid-template-columns: repeat(var(--bs-columns, 12), 1fr);
+  gap: var(--bs-gap, 1.5rem);
+}
+.grid .g-col-6 {
+  grid-column: auto / span 6;
+}
+.grid .g-col-12 {
+  grid-column: auto / span 12;
+}
+.grid .g-col-4 {
+  grid-column: auto / span 4;
+}
+/* Over ride */
+
+.btn-primary {
+  background-color: #ea4a24;
+  color: white;
+  border: 1px solid #ea4a24;
+}
+
+.btn-primary:hover {
+  background-color: #fff;
+  color: #ea4a24;
+  border: 1px solid #ea4a24;
+}
+
+.btn-secondary {
+  background-color: #ed7d31;
+  color: #fff;
+  border: 1px solid #ed7d31;
+}
+
+.btn-secondary:hover {
+  background-color: #fff;
+  color: #ed7d31;
+  border: 1px solid #ed7d31;
+}
+
+.btn-info {
+  background-color: #4472c4;
+  color: #fff;
+  border: 1px solid #4472c4;
+}
+
+.btn-info:hover {
+  background-color: #fff;
+  color: #4472c4;
+  border: 1px solid #4472c4;
+}
+
+.btn-gray {
+  background-color: #8497b0;
+  color: #fff;
+  border: 1px solid #8497b0;
+}
+
+.btn-gray:hover {
+  background-color: #fff;
+  color: #8497b0;
+  border: 1px solid #8497b0;
+}
+/* Over ride */
+
+/* Home */
+.bg-dynamic-card {
+  background-color: #ea4a24 !important;
+}
+
+.bg-dynamic {
+  background-image: url(../images/truck-dynamic-load.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.bg-api-card {
+  background-color: #4472c4 !important;
+}
+
+.bg-api {
+  background-image: url(../images/api-pricing-image.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.bg-rpa-card {
+  background-color: #ed7d31 !important;
+}
+
+.bg-rpa {
+  background-image: url(../images/rpa-pricing-image.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.bg-automation-card {
+  background-color: #8faadc !important;
+}
+
+.bg-automation {
+  background-image: url(../images/automation-pricing-image.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.rates-card-container {
+  background-color: #17375e;
+}
+
+.rates-card {
+  background-color: #32599e;
+}
+
+.automation-card {
+  background-color: #8faadc;
+}
+
+.small {
+  font-size: 12px;
+}
+
+/* Home */
+
+/* Getstarted */
+.icon-lg {
+  font-size: 2.5rem;
+
+}
+.fs-md {
+  font-size: 0.75rem;
+}
+.h-100vh {
+  height: 100vh;
+}
+.pricing-label {
+  background-image: linear-gradient(to right, #573ea0, #bc4e2d);
+  border-radius: 12px;
+}
+
+.fs-sm {
+  font-size: 0.625rem;
+}
+
+.active {
+  border: 2px solid blue !important;
+}
+
+.active-icon {
+  color: blue;
+}
+
+.pricehide {
+  display: none !important;
+}
+.priceshow {
+  display: flex !important;
+}
+/* Getstarted  */
