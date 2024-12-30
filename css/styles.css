@@ -3,13 +3,16 @@ a {
   color: #666586;
   font-weight: 600;
 }
+
 .hero-bg {
   background-color: #4498C8;
   box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.3);
 }
+
 .lead {
   font-size: 24px;
 }
+
 form {
   width: 100%;
 }
@@ -120,15 +123,19 @@ button:hover:before {
   grid-template-columns: repeat(var(--bs-columns, 12), 1fr);
   gap: var(--bs-gap, 1.5rem);
 }
+
 .grid .g-col-6 {
   grid-column: auto / span 6;
 }
+
 .grid .g-col-12 {
   grid-column: auto / span 12;
 }
+
 .grid .g-col-4 {
   grid-column: auto / span 4;
 }
+
 /* Over ride */
 
 .btn-primary {
@@ -178,6 +185,7 @@ button:hover:before {
   color: #8497b0;
   border: 1px solid #8497b0;
 }
+
 /* Over ride */
 
 /* Home */
@@ -248,12 +256,15 @@ button:hover:before {
   font-size: 2.5rem;
 
 }
+
 .fs-md {
   font-size: 0.75rem;
 }
+
 .h-100vh {
   height: 100vh;
 }
+
 .pricing-label {
   background-image: linear-gradient(to right, #573ea0, #bc4e2d);
   border-radius: 12px;
@@ -274,7 +285,20 @@ button:hover:before {
 .pricehide {
   display: none !important;
 }
+
 .priceshow {
   display: flex !important;
 }
+
 /* Getstarted  */
+
+.text-box {
+  height: 100px !important;
+}
+
+.check-box {
+  height: 40px !important;
+  line-height: 1.2;
+  border-bottom: .1px dashed rgb(148, 148, 148);
+  margin-bottom: 5px;
+}
