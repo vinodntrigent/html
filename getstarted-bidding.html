@@ -76,11 +76,11 @@
                                     <div class="d-flex mt-4 align-items-center gap-4">
                                         <div class="d-flex">
                                             <div class="input-group input-group-sm">
-                                                <span class="input-group-text" role="button"><i
+                                                <span class="input-group-text" role="button" id="decrease-btn"><i
                                                         class="bi bi-dash"></i></span>
                                                 <input class="form-control form-control-sm text-center border"
-                                                    type="number" name="ship-0" max="2" min="1" step="1" value="1">
-                                                <span class="input-group-text" role="button"><i
+                                                    type="number" name="" max="10" min="1" step="1" value="1" id="quantity">
+                                                <span class="input-group-text" role="button" id="increase-btn"><i
                                                         class="bi bi-plus"></i></span>
                                             </div>
                                         </div>
@@ -225,6 +225,26 @@
                 document.querySelector("#mannual i").classList.add("active-icon");
             }
         }
+
+        //increasing and decreasing the value 
+        const decreaseBtn = document.getElementById("decrease-btn");
+        const quantityInput = document.getElementById("quantity");
+        const increaseBtn = document.getElementById("increase-btn");
+
+        decreaseBtn.addEventListener("click", function () {
+            let currentValue = parseInt(quantityInput.value);
+
+            if (currentValue > quantityInput.min) {
+            quantityInput.value = currentValue - 1;
+            }
+        });
+
+        increaseBtn.addEventListener("click", function () {
+            let currentValue = parseInt(quantityInput.value);
+            if (currentValue < quantityInput.max) {
+            quantityInput.value = currentValue + 1;
+            }
+        });
 
         $(function () {
             $("#multilane").addClass('pricehide');
