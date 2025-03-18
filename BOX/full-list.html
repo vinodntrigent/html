@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Box Program - Full List View" />
+  <title>Box Program</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/utility.css" />
+  <link rel="shortcut icon" href="assets/box.png" type="image/x-icon" />
+</head>
+
+<body>
+  <!-- Sidebar Navigation -->
+  <aside class="sidebar bg-gray">
+    <nav class="sidebar-nav px-2">
+      <ul class="nav flex-column gap-2">
+        <li class="nav-item">
+          <a href="index.html" class="nav-link " title="Dashboard">
+            <i class="bi bi-grid text-white"></i>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="full-list.html" class="nav-link active" title="Review Jobs">
+            <i class="bi bi-check2-square text-black"></i>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link" title="In Transit Outbound Jobs">
+            <img src="assets/3.svg" alt="" />
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link" title="Pending Inbound Jobs">
+            <img src="assets/4.svg" alt="" />
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link" title="Received Item Check">
+            <i class="bi bi-card-checklist text-white"></i>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link" title="Jobs in Re-deployment">
+            <img src="assets/5.svg" alt="" />
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link" title="Jobs Ready to Settle">
+            <img src="assets/6.svg" alt="" />
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link" title="Job Report">
+            <i class="bi bi-file-earmark-spreadsheet text-white"></i>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- Main Navigation -->
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-gray fixed-top py-0">
+      <div class="container-fluid">
+        <div class="d-flex align-items-center ">
+          <img src="assets/box.png" alt="Box Program" class="me-2 rounded d-none d-md-block" width="32" height="32" />
+          <a class="navbar-brand d-none d-md-block" href="index.html">Box Program</a>
+          <div class="d-flex align-items-center">
+            <div class="border-end borer-2 border-h d-none d-lg-block"></div>
+          </div>
+          <img src="assets/planitroi.png" alt="Plan-IT-ROI" class="ms-2 d-none d-lg-block" />
+        </div>
+
+        <div class="d-flex align-items-center">
+          <div class="me-3">
+            <select class="form-select rounded-5 border-0 shadow-none topnav-item">
+              <option>All</option>
+              <option>Raymond James</option>
+              <option>True Blue</option>
+              <option>Yahoo</option>
+              <option>PWC</option>
+              <option>E&Y</option>
+            </select>
+          </div>
+          <div class="position-relative shadow-none border-0 me-3 topnav-item">
+            <div class="input-group">
+              <input type="search" class="form-control shadow-none border-0" id="topsearch"
+              placeholder="Track Box Enter Job ID">
+              <button class="btn btn-secondary" type="button" id="btn-topsearch"><i class="bi bi-search"></i></button>
+            </div>
+          </div>
+
+          <div class="notifications position-relative" data-bs-toggle="offcanvas"
+            data-bs-target="#notificationOffcanvas">
+            <span class="badge py-0 px-1 bg-accent text-dark label z-1">04</span>
+            <!-- <i class="bi bi-bell"></i> -->
+            <div class="d-flex align-items-center justify-content-center px-2 py-2 rounded-5 bg-light-gray notification-bg"  >
+              <img src="assets/bell.png" alt="Notification" class="position-absolute" />
+            </div>
+          </div>
+          <div class="language-selector ms-3">
+            <a class="dropdown-toggle d-flex align-items-center rounded-circle " type="button" id="userDropdown"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              <span
+                class="badge bg-secondary d-grid align-items-center justify-content-center rounded-5 text-decoration-none m-0 badge-wh">CN</span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+              <li>
+                <a class="dropdown-item fw-semibold d-flex align-items-center" href="#"><span
+                    class="badge bg-secondary d-grid align-items-center justify-content-center rounded-5 me-2 badge-wh">CN</span></i>Casey
+                  Neville</a>
+              </li>
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
+              <li>
+                <a class="dropdown-item" href="#"><i class="bi bi-person me-2"></i>My Profile</a>
+              </li>
+
+              <li>
+                <a class="dropdown-item" href="#"><i class="bi bi-box-arrow-right me-2"></i>Logout</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Notification Off-Canvas -->
+  <div class="offcanvas offcanvas-end notification-offcanvas" tabindex="-1" id="notificationOffcanvas">
+    <div class="offcanvas-header notification-header">
+      <h5 class="offcanvas-title">Notifications</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body p-0">
+      <div class="accordion shadow-none border-0" id="accordionNotification">
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+              aria-expanded="true" aria-controls="collapseOne">
+              Today
+            </button>
+          </h2>
+          <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionNotification">
+            <div class="accordion-body">
+              <div class="notification-item">
+                <div class="d-flex justify-content-between align-items-start">
+                  <div>
+                    <p class="mb-1">New job request from True Blue</p>
+                    <p class="mb-0 text-muted">Job ID: J19488</p>
+                  </div>
+                  <span class="notification-time">1 hour ago</span>
+                </div>
+              </div>
+              <div class="notification-item">
+                <div class="d-flex justify-content-between align-items-start">
+                  <div>
+                    <p class="mb-1">Box received for Raymond James</p>
+                    <p class="mb-0 text-muted">Job ID: J19487</p>
+                  </div>
+                  <span class="notification-time">3 hours ago</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button " type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+              aria-expanded="false" aria-controls="collapseTwo">
+              Yesterday
+            </button>
+          </h2>
+          <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionNotification">
+            <div class="accordion-body">
+              <div class="notification-item">
+                <div class="d-flex justify-content-between align-items-start">
+                  <div>
+                    <p class="mb-1">Job status updated to "In Progress"</p>
+                    <p class="mb-0 text-muted">Job ID: J19486</p>
+                  </div>
+                  <span class="notification-time">Wed, Mar 12</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+              Last 1 week
+            </button>
+          </h2>
+          <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionNotification">
+            <div class="accordion-body">
+              <div class="notification-item">
+                <div class="d-flex justify-content-between align-items-start">
+                  <div>
+                    <p class="mb-1">5 jobs completed successfully</p>
+                    <p class="mb-0 text-muted">View details</p>
+                  </div>
+                  <span class="notification-time">Mar 5, 2024</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="container-fluid">
+      <div class="d-flex justify-content-between align-items-center mb-2">
+        <h1 class="h3">Review Jobs</h1>
+      </div>
+
+      <div class="card">
+        <div class="d-flex gap-2 align-items-center justify-content-end ">
+          <div>
+            <a href="#" type="button" data-bs-toggle="dropdown"
+              class="btn rounded-5 px-4 text-white " aria-expanded="false"
+              id="downloadDropdown" style="background-color: #81BB27;">Download</a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="downloadDropdown">
+
+              <li>
+                <a class="dropdown-item" href="#">Download Excel</a>
+              </li>
+
+              <li>
+                <a class="dropdown-item" href="#">Download PDF</a>
+              </li>
+            </ul>
+          </div>
+          <div class="position-relative shadow-none border-0 my-2 me-2">
+            <input type="search" class="form-control ps-5 rounded-5" placeholder="Search by Job ID">
+            <i class="bi bi-search position-absolute top-50 start-0 translate-middle-y ms-3 text-muted fs-7"></i>
+          </div>
+        </div>
+        <div class="card-body" >
+          <div class="table-responsive" >
+            <table class="table " >
+              <thead>
+                <tr>
+                  <th>Job ID</th>
+                  <th>Client</th>
+                  <th>Job Status</th>
+                  <th>Created Date</th>
+                  <th>Employee Name</th>
+                  <th>Requestor Name</th>
+                  <th>Job
+                    Address Country</th>
+                  <th>Assigned
+                    To</th>
+                  <th>Logistics Aging</th>
+                  <th>Total No. Of Units</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><a href="javascript:;" data-bs-toggle="modal" data-bs-target="#jobreviewModal">J19488</a></td>
+                  <td>True Blue</td>
+                  <td><span class="badge bg-warning">Created</span></td>
+                  <td>2/1/2024</td>
+                  <td>Bob</td>
+                  <td>Luis</td>
+                  <td>555 Wilson Dr. Hartford, CT 33155</td>
+                  <td>Nicolas Vasquez</td>
+                  <td>5 days</td>
+                  <td class="text-center" ><a href="javascript:;" data-bs-toggle="modal" data-bs-target="#unitsModal">2</a></td>
+                  <td>
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#reviewJob" tabindex="-1"><img
+                        src="assets/check.png" alt="checked" width="16"></a>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="javascript:;" data-bs-toggle="modal" data-bs-target="#jobreviewModal">J19487</a></td>
+                  <td>Raymond James</td>
+                  <td><span class="badge bg-warning">Created</span></td>
+                  <td>2/1/2024</td>
+                  <td>Sarah</td>
+                  <td>Michael</td>
+                  <td>789 Oak Street, Boston, MA 02108</td>
+                  <td>Emily Rodriguez</td>
+                  <td>4 days</td>
+                  <td class="text-center"><a href="javascript:;" data-bs-toggle="modal" data-bs-target="#unitsModal">3</a></td>
+                  <td>
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#reviewJob" tabindex="-1"><img
+                        src="assets/check.png" alt="checked" width="16"></a>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="javascript:;" data-bs-toggle="modal" data-bs-target="#jobreviewModal">J19486</a></td>
+                  <td>Tech Corp</td>
+                  <td><span class="badge bg-warning">Created</span></td>
+                  <td>1/31/2024</td>
+                  <td>James</td>
+                  <td>Patricia</td>
+                  <td>321 Pine Ave, Seattle, WA 98101</td>
+                  <td>David Chen</td>
+                  <td>6 days</td>
+                  <td class="text-center"><a href="javascript:;" data-bs-toggle="modal" data-bs-target="#unitsModal">1</a></td>
+                  <td>
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#reviewJob" tabindex="-1"><img
+                        src="assets/check.png" alt="checked" width="16"></a>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="javascript:;" data-bs-toggle="modal" data-bs-target="#jobapprovedModal">J19485</a></td>
+                  <td>True Blue</td>
+                  <td><span class="badge bg-success">Approved</span></td>
+                  <td>1/31/2024</td>
+                  <td>Jack</td>
+                  <td>George</td>
+                  <td>321 Pine Ave, Seattle, WA 98101</td>
+                  <td>David Chen</td>
+                  <td>6 days</td>
+                  <td class="text-center"><a href="javascript:;" data-bs-toggle="modal" data-bs-target="#unitsModal">1</a></td>
+                  <td>
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#reviewJob" tabindex="-1"><img
+                        src="assets/check.png" alt="checked" width="16"></a>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="javascript:;" data-bs-toggle="modal" data-bs-target="#jobrejectedModal" class="text-decoration-line-through">J19484</a></td>
+                  <td>Raymond James</td>
+                  <td><span class="badge bg-danger">Rejected</span></td>
+                  <td>1/31/2024</td>
+                  <td>Joy</td>
+                  <td>Shara</td>
+                  <td>321 Pine Ave, Seattle, WA 98101</td>
+                  <td>David Chen</td>
+                  <td>6 days</td>
+                  <td class="text-center"><a href="javascript:;" data-bs-toggle="modal" data-bs-target="#unitsModal">1</a></td>
+                  <td>
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#reviewJob" tabindex="-1"><img
+                        src="assets/check.png" alt="checked" width="16"></a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="d-flex justify-content-between align-items-center mt-3 pb-4">
+            <div>
+              <span class="text-muted">Records <strong class="fw-bold text-dark">20</strong></span>
+            </div>
+            <ul class="pagination d-flex gap-1">
+              <li class="page-item">
+                <a class="page-link" href="#" aria-label="Previous">
+                  <i class="bi bi-chevron-left text-secondary"></i>
+                </a>
+              </li>
+              <li class="page-item bg-accent text-white active"><a class="page-link " href="#">1</a></li>
+              <li class="page-item"><a class="page-link text-secondary" href="#">2</a></li>
+              <li class="page-item">
+                <a class="page-link " href="#" aria-label="Next">
+                  <i class="bi bi-chevron-right text-secondary"></i>
+                </a>
+              </li>
+            </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Modal Review Item Recieved -->
+  <div class="modal modal-xl" tabindex="-1" id="reviewJob">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Approve/ Reject</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row g-3">
+            <!-- First Row -->
+            <div class="col-md-3">
+              <label class="form-label text-muted small">Job ID</label>
+              <p class="mb-0 fw-medium">J19456</p>
+            </div>
+            <div class="col-md-3">
+              <label class="form-label text-muted small">Client</label>
+              <p class="mb-0 fw-medium">True Blue</p>
+            </div>
+            <div class="col-md-3">
+              <label class="form-label text-muted small">Job Status</label>
+              <p class="mb-0"><span class="badge bg-warning">Pending</span></p>
+            </div>
+            <div class="col-md-3">
+              <label class="form-label text-muted small">Created Date</label>
+              <p class="mb-0 fw-medium">2/1/2024</p>
+            </div>
+
+            <!-- Second Row -->
+            <div class="col-md-3">
+              <label class="form-label text-muted small">Requestor Name</label>
+              <p class="mb-0 fw-medium">Luis</p>
+            </div>
+            <div class="col-md-3">
+              <label class="form-label text-muted small">Job Address</label>
+              <address class="mb-0 fw-medium">
+                555 Wilson Dr.<br>
+                Hartford, CT 31155
+              </address>
+            </div>
+            <div class="col-md-3">
+              <label class="form-label text-muted small">Assigned To</label>
+              <p class="mb-0 fw-medium">Nicolas Vasquez</p>
+            </div>
+            <div class="col-md-3">
+              <label class="form-label text-muted small">Employee Name</label>
+              <p class="mb-0 fw-medium">Bob</p>
+            </div>
+
+            <!-- Third Row -->
+            <div class="col-md-3">
+              <label class="form-label text-muted small">Logistics Aging</label>
+              <p class="mb-0 fw-medium">5 days</p>
+            </div>
+            <div class="col-md-3">
+              <label class="form-label text-muted small">Total No. Of Units</label>
+              <p class="mb-0 fw-medium">2</p>
+            </div>
+
+            <div class="col-md-9">
+              <div class="btn-group mt-4" role="group" aria-label="Review options">
+                <input type="radio" class="btn-check" name="review" id="reject1" autocomplete="off"
+                  onclick="document.getElementById('rejectTextarea').style.display='block'">
+                <label class="btn btn-outline-danger" for="reject1">Reject</label>
+
+                <input type="radio" class="btn-check" name="review" id="verified1" autocomplete="off"
+                  onclick="document.getElementById('rejectTextarea').style.display='none'">
+                <label class="btn btn-outline-success" for="verified1">Approve</label>
+              </div>
+            </div>
+            <div class="col-md-9 ">
+              <textarea class="form-control " style="display: none;" rows="3" name="rejectTextarea" id="rejectTextarea"
+                placeholder="Enter reason for rejection"></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn text-white btn-submit">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+ <!-- Modal Total No. Of Units -->
+ <div class="modal modal-md" tabindex="-1" id="unitsModal">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Total No. Of Units</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>Job ID</th>
+                <th>Model</th>
+                <th>Serial Number</th>
+                <th>Recipent Name</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>J19488</td>
+                <td>Thinkpad X1</td>
+                <td>SN12345</td>
+                <td class="text-center">Ana</td>
+              </tr>
+              <tr>
+                <td>J19488</td>
+                <td>Thinkpad T14</td>
+                <td>SN12345</td>
+                <td class="text-center">Bob</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="modal-footer border-0">
+        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <!-- Modal Job details -->
+  <div class="modal" tabindex="-1" id="jobreviewModal">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Job ID - J19488</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-7">
+
+              <div class="row">
+                <div class="col-4 mb-3">
+                  <label class="form-label text-muted small mb-0">Job ID</label>
+                  <p class="mb-0 fw-medium">J19456</p>
+                </div>
+                <div class="col-4 mb-3">
+                  <label class="form-label text-muted small mb-0">Client</label>
+                  <p class="mb-0 fw-medium">True Blue</p>
+                </div>
+                <div class="col-4 mb-3">
+                  <label class="form-label text-muted small mb-0">Job Status</label>
+                  <p class="mb-0"><span class="badge bg-warning">Created</span></p>
+                </div>
+                <div class="col-4 mb-3">
+                  <label class="form-label text-muted small mb-0">Created Date</label>
+                  <p class="mb-0 fw-medium">2/1/2024</p>
+                </div>
+
+                <div class="col-4 mb-3">
+                  <label class="form-label text-muted small mb-0">Requestor Name</label>
+                  <p class="mb-0 fw-medium">Luis</p>
+                </div>
+                <div class="col-4 mb-3">
+                  <label class="form-label text-muted small mb-0">Total No. Of Units</label>
+                  <p class="mb-0 fw-medium">2</p>
+                </div>
+                <div class="col-12  mb-3">
+                  <label class="form-label text-muted small mb-0">Job Address</label>
+                  <address class="mb-0 fw-medium">
+                    555 Wilson Dr.
+                    Hartford, CT 31155
+                  </address>
+                </div>
+                <div class="col-4 mb-3">
+                  <label class="form-label text-muted small mb-0">Assigned To</label>
+                  <p class="mb-0 fw-medium">Nicolas Vasquez</p>
+                </div>
+                <div class="col-4 mb-3">
+                  <label class="form-label text-muted small mb-0">Employee Name</label>
+                  <p class="mb-0 fw-medium">Bob</p>
+                </div>
+
+                <div class="col-4 mb-3">
+                  <label class="form-label text-muted small mb-0">Logistics Aging</label>
+                  <p class="mb-0 fw-medium">5 days</p>
+                </div>
+
+
+
+
+              </div>
+
+            </div>
+            <div class="col-5">
+              <!-- Start: Tracking -->
+              <div id="tracking">
+                <div class="tracking-list">
+                  <div class="tracking-item-pending">
+                    <div class="tracking-icon status-final">
+                      <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M12 0C9.62663 0 7.30655 0.703788 5.33316 2.02236C3.35977 3.34094 1.8217 5.21508 0.913451 7.4078C0.00519941 9.60051 -0.232441 12.0133 0.230582 14.3411C0.693605 16.6689 1.83649 18.807 3.51472 20.4853C5.19295 22.1635 7.33115 23.3064 9.65892 23.7694C11.9867 24.2324 14.3995 23.9948 16.5922 23.0865C18.7849 22.1783 20.6591 20.6402 21.9776 18.6668C23.2962 16.6934 24 14.3734 24 12C23.9966 8.81843 22.7313 5.76814 20.4816 3.51843C18.2319 1.26872 15.1816 0.00335979 12 0ZM17.2685 9.88384L10.8069 16.3454C10.7212 16.4312 10.6194 16.4993 10.5073 16.5457C10.3953 16.5922 10.2752 16.6161 10.1538 16.6161C10.0325 16.6161 9.91243 16.5922 9.80037 16.5457C9.68831 16.4993 9.5865 16.4312 9.50077 16.3454L6.73154 13.5762C6.55834 13.4029 6.46103 13.168 6.46103 12.9231C6.46103 12.6781 6.55834 12.4432 6.73154 12.27C6.90475 12.0968 7.13967 11.9995 7.38462 11.9995C7.62957 11.9995 7.86449 12.0968 8.0377 12.27L10.1538 14.3873L15.9623 8.57769C16.0481 8.49193 16.1499 8.4239 16.2619 8.37748C16.374 8.33107 16.4941 8.30718 16.6154 8.30718C16.7367 8.30718 16.8568 8.33107 16.9688 8.37748C17.0809 8.4239 17.1827 8.49193 17.2685 8.57769C17.3542 8.66345 17.4223 8.76527 17.4687 8.87733C17.5151 8.98938 17.539 9.10948 17.539 9.23077C17.539 9.35205 17.5151 9.47216 17.4687 9.58421C17.4223 9.69627 17.3542 9.79808 17.2685 9.88384Z"
+                          fill="currentColor" />
+                      </svg>
+                    </div>
+                    <div class="tracking-content">Inbound Box Received<span class="text-muted fw-normal"></span></div>
+                  </div>
+
+                  <div class="tracking-item-pending">
+                    <div class="tracking-icon status-intransit">
+                      <svg class="svg-inline--fa fa-circle fa-w-16" aria-hidden="true" data-prefix="fas"
+                        data-icon="circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
+                        data-fa-i2svg="">
+                        <path fill="currentColor"
+                          d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"></path>
+                      </svg>
+                    </div>
+                    <div class="tracking-content">Inbound Box shipped<span class="text-muted fw-normal"></span></div>
+                  </div>
+                  <div class="tracking-item-pending">
+                    <div class="tracking-icon status-intransit">
+                      <svg class="svg-inline--fa fa-circle fa-w-16" aria-hidden="true" data-prefix="fas"
+                        data-icon="circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
+                        data-fa-i2svg="">
+                        <path fill="currentColor"
+                          d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"></path>
+                      </svg>
+                    </div>
+                    <div class="tracking-content">Outbound Box Reached<span class="text-muted fw-normal"></span></div>
+                  </div>
+                  <div class="tracking-item-pending">
+                    <div class="tracking-icon status-intransit">
+                      <svg class="svg-inline--fa fa-circle fa-w-16" aria-hidden="true" data-prefix="fas"
+                        data-icon="circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
+                        data-fa-i2svg="">
+                        <path fill="currentColor"
+                          d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"></path>
+                      </svg>
+                    </div>
+                    <div class="tracking-content">Box Shipped<span class="text-muted fw-normal"></span>
+                    </div>
+                  </div>
+
+
+                  <div class="tracking-item-pending">
+                    <div class="tracking-icon status-intransit">
+                      <svg class="svg-inline--fa fa-circle fa-w-16" aria-hidden="true" data-prefix="fas"
+                        data-icon="circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
+                        data-fa-i2svg="">
+                        <path fill="currentColor"
+                          d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"></path>
+                      </svg>
+                    </div>
+                    <div class="tracking-content">Reviewed and Approved<span class="text-muted fw-normal"></span></div>
+                  </div>
+                  <div class="tracking-item">
+                    <div class="tracking-icon status-intransit">
+                      <svg class="svg-inline--fa fa-circle fa-w-16" aria-hidden="true" data-prefix="fas"
+                        data-icon="circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
+                        data-fa-i2svg="">
+                        <path fill="currentColor"
+                          d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"></path>
+                      </svg>
+                    </div>
+                    <div class="tracking-content">Client Request Received<span class="text-muted fw-normal">Jan 15,
+                        2024</span></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- End: Tracking -->
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Job Approved -->
+  <div class="modal" tabindex="-1" id="jobapprovedModal">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Job ID - J19374</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-7">
+
+              <div class="row">
+                <div class="col-4 mb-3">
+                  <label class="form-label text-muted small mb-0">Job ID</label>
+                  <p class="mb-0 fw-medium">J19374</p>
+                </div>
+                <div class="col-4 mb-3">
+                  <label class="form-label text-muted small mb-0">Client</label>
+                  <p class="mb-0 fw-medium">True Blue</p>
+                </div>
+                <div class="col-4 mb-3">
+                  <label class="form-label text-muted small mb-0">Job Status</label>
+                  <p class="mb-0"><span class="badge bg-success text-wrap ">Approved</span></p>
+                </div>
+                <div class="col-4 mb-3">
+                  <label class="form-label text-muted small mb-0">Created Date</label>
+                  <p class="mb-0 fw-medium">2/1/2024</p>
+                </div>
+
+                <div class="col-4 mb-3">
+                  <label class="form-label text-muted small mb-0">Requestor Name</label>
+                  <p class="mb-0 fw-medium">Luis</p>
+                </div>
+                <div class="col-4 mb-3">
+                  <label class="form-label text-muted small mb-0">Total No. Of Units</label>
+                  <p class="mb-0 fw-medium">2</p>
+                </div>
+                <div class="col-12  mb-3">
+                  <label class="form-label text-muted small mb-0">Job Address</label>
+                  <address class="mb-0 fw-medium">
+                    555 Wilson Dr.
+                    Hartford, CT 31155
+                  </address>
+                </div>
+                <div class="col-4 mb-3">
+                  <label class="form-label text-muted small mb-0">Assigned To</label>
+                  <p class="mb-0 fw-medium">Nicolas Vasquez</p>
+                </div>
+                <div class="col-4 mb-3">
+                  <label class="form-label text-muted small mb-0">Employee Name</label>
+                  <p class="mb-0 fw-medium">Bob</p>
+                </div>
+
+                <div class="col-4 mb-3">
+                  <label class="form-label text-muted small mb-0">Logistics Aging</label>
+                  <p class="mb-0 fw-medium">5 days</p>
+                </div>
+
+
+
+
+              </div>
+
+            </div>
+            <div class="col-5">
+              <!-- Start: Tracking -->
+              <div id="tracking">
+                <div class="tracking-list">
+                  <div class="tracking-item">
+                    <div class="tracking-icon status-final">
+                      <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M12 0C9.62663 0 7.30655 0.703788 5.33316 2.02236C3.35977 3.34094 1.8217 5.21508 0.913451 7.4078C0.00519941 9.60051 -0.232441 12.0133 0.230582 14.3411C0.693605 16.6689 1.83649 18.807 3.51472 20.4853C5.19295 22.1635 7.33115 23.3064 9.65892 23.7694C11.9867 24.2324 14.3995 23.9948 16.5922 23.0865C18.7849 22.1783 20.6591 20.6402 21.9776 18.6668C23.2962 16.6934 24 14.3734 24 12C23.9966 8.81843 22.7313 5.76814 20.4816 3.51843C18.2319 1.26872 15.1816 0.00335979 12 0ZM17.2685 9.88384L10.8069 16.3454C10.7212 16.4312 10.6194 16.4993 10.5073 16.5457C10.3953 16.5922 10.2752 16.6161 10.1538 16.6161C10.0325 16.6161 9.91243 16.5922 9.80037 16.5457C9.68831 16.4993 9.5865 16.4312 9.50077 16.3454L6.73154 13.5762C6.55834 13.4029 6.46103 13.168 6.46103 12.9231C6.46103 12.6781 6.55834 12.4432 6.73154 12.27C6.90475 12.0968 7.13967 11.9995 7.38462 11.9995C7.62957 11.9995 7.86449 12.0968 8.0377 12.27L10.1538 14.3873L15.9623 8.57769C16.0481 8.49193 16.1499 8.4239 16.2619 8.37748C16.374 8.33107 16.4941 8.30718 16.6154 8.30718C16.7367 8.30718 16.8568 8.33107 16.9688 8.37748C17.0809 8.4239 17.1827 8.49193 17.2685 8.57769C17.3542 8.66345 17.4223 8.76527 17.4687 8.87733C17.5151 8.98938 17.539 9.10948 17.539 9.23077C17.539 9.35205 17.5151 9.47216 17.4687 9.58421C17.4223 9.69627 17.3542 9.79808 17.2685 9.88384Z"
+                          fill="currentColor" />
+                      </svg>
+                    </div>
+                    <div class="tracking-content">Inbound Box Received<span class="text-muted fw-normal"></span></div>
+                  </div>
+
+                  <div class="tracking-item">
+                    <div class="tracking-icon status-intransit">
+                      <svg class="svg-inline--fa fa-circle fa-w-16" aria-hidden="true" data-prefix="fas"
+                        data-icon="circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
+                        data-fa-i2svg="">
+                        <path fill="currentColor"
+                          d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"></path>
+                      </svg>
+                    </div>
+                    <div class="tracking-content">Inbound Box shipped<span class="text-muted fw-normal"></span></div>
+                  </div>
+                  <div class="tracking-item">
+                    <div class="tracking-icon status-intransit">
+                      <svg class="svg-inline--fa fa-circle fa-w-16" aria-hidden="true" data-prefix="fas"
+                        data-icon="circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
+                        data-fa-i2svg="">
+                        <path fill="currentColor"
+                          d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"></path>
+                      </svg>
+                    </div>
+                    <div class="tracking-content">Outbound Box Reached<span class="text-muted fw-normal"></span></div>
+                  </div>
+                  <div class="tracking-item">
+                    <div class="tracking-icon status-intransit">
+                      <svg class="svg-inline--fa fa-circle fa-w-16" aria-hidden="true" data-prefix="fas"
+                        data-icon="circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
+                        data-fa-i2svg="">
+                        <path fill="currentColor"
+                          d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"></path>
+                      </svg>
+                    </div>
+                    <div class="tracking-content">Box Shipped<span class="text-muted fw-normal">Jan 17, 2024</span>
+                    </div>
+                  </div>
+
+
+                  <div class="tracking-item">
+                    <div class="tracking-icon status-intransit">
+                      <svg class="svg-inline--fa fa-circle fa-w-16" aria-hidden="true" data-prefix="fas"
+                        data-icon="circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
+                        data-fa-i2svg="">
+                        <path fill="currentColor"
+                          d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"></path>
+                      </svg>
+                    </div>
+                    <div class="tracking-content">Reviewed and Approved<span class="text-muted fw-normal">Jan 17,
+                        2024</span></div>
+                  </div>
+                  <div class="tracking-item">
+                    <div class="tracking-icon status-intransit">
+                      <svg class="svg-inline--fa fa-circle fa-w-16" aria-hidden="true" data-prefix="fas"
+                        data-icon="circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
+                        data-fa-i2svg="">
+                        <path fill="currentColor"
+                          d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"></path>
+                      </svg>
+                    </div>
+                    <div class="tracking-content">Client Request Received<span class="text-muted fw-normal">Jan 15,
+                        2024</span></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- End: Tracking -->
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Job Rejected -->
+  <div class="modal" tabindex="-1" id="jobrejectedModal">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Job ID - J19374</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-7">
+
+              <div class="row">
+                <div class="col-4 mb-3">
+                  <label class="form-label text-muted small mb-0">Job ID</label>
+                  <p class="mb-0 fw-medium">J19374</p>
+                </div>
+                <div class="col-4 mb-3">
+                  <label class="form-label text-muted small mb-0">Client</label>
+                  <p class="mb-0 fw-medium">True Blue</p>
+                </div>
+                <div class="col-4 mb-3">
+                  <label class="form-label text-muted small mb-0">Job Status</label>
+                  <p class="mb-0"><span class="badge bg-danger text-wrap ">Rejected</span></p>
+                </div>
+                <div class="col-4 mb-3">
+                  <label class="form-label text-muted small mb-0">Created Date</label>
+                  <p class="mb-0 fw-medium">2/1/2024</p>
+                </div>
+
+                <div class="col-4 mb-3">
+                  <label class="form-label text-muted small mb-0">Requestor Name</label>
+                  <p class="mb-0 fw-medium">Luis</p>
+                </div>
+                <div class="col-4 mb-3">
+                  <label class="form-label text-muted small mb-0">Total No. Of Units</label>
+                  <p class="mb-0 fw-medium">2</p>
+                </div>
+                <div class="col-12  mb-3">
+                  <label class="form-label text-muted small mb-0">Job Address</label>
+                  <address class="mb-0 fw-medium">
+                    555 Wilson Dr.
+                    Hartford, CT 31155
+                  </address>
+                </div>
+                <div class="col-4 mb-3">
+                  <label class="form-label text-muted small mb-0">Assigned To</label>
+                  <p class="mb-0 fw-medium">Nicolas Vasquez</p>
+                </div>
+                <div class="col-4 mb-3">
+                  <label class="form-label text-muted small mb-0">Employee Name</label>
+                  <p class="mb-0 fw-medium">Bob</p>
+                </div>
+
+                <div class="col-4 mb-3">
+                  <label class="form-label text-muted small mb-0">Logistics Aging</label>
+                  <p class="mb-0 fw-medium">5 days</p>
+                </div>
+
+
+
+
+              </div>
+
+            </div>
+            <div class="col-5">
+              <!-- Start: Tracking -->
+              <div id="tracking">
+                <div class="tracking-list">
+                  <div class="tracking-item">
+                    <div class="tracking-icon status-final">
+                      <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M12 0C9.62663 0 7.30655 0.703788 5.33316 2.02236C3.35977 3.34094 1.8217 5.21508 0.913451 7.4078C0.00519941 9.60051 -0.232441 12.0133 0.230582 14.3411C0.693605 16.6689 1.83649 18.807 3.51472 20.4853C5.19295 22.1635 7.33115 23.3064 9.65892 23.7694C11.9867 24.2324 14.3995 23.9948 16.5922 23.0865C18.7849 22.1783 20.6591 20.6402 21.9776 18.6668C23.2962 16.6934 24 14.3734 24 12C23.9966 8.81843 22.7313 5.76814 20.4816 3.51843C18.2319 1.26872 15.1816 0.00335979 12 0ZM17.2685 9.88384L10.8069 16.3454C10.7212 16.4312 10.6194 16.4993 10.5073 16.5457C10.3953 16.5922 10.2752 16.6161 10.1538 16.6161C10.0325 16.6161 9.91243 16.5922 9.80037 16.5457C9.68831 16.4993 9.5865 16.4312 9.50077 16.3454L6.73154 13.5762C6.55834 13.4029 6.46103 13.168 6.46103 12.9231C6.46103 12.6781 6.55834 12.4432 6.73154 12.27C6.90475 12.0968 7.13967 11.9995 7.38462 11.9995C7.62957 11.9995 7.86449 12.0968 8.0377 12.27L10.1538 14.3873L15.9623 8.57769C16.0481 8.49193 16.1499 8.4239 16.2619 8.37748C16.374 8.33107 16.4941 8.30718 16.6154 8.30718C16.7367 8.30718 16.8568 8.33107 16.9688 8.37748C17.0809 8.4239 17.1827 8.49193 17.2685 8.57769C17.3542 8.66345 17.4223 8.76527 17.4687 8.87733C17.5151 8.98938 17.539 9.10948 17.539 9.23077C17.539 9.35205 17.5151 9.47216 17.4687 9.58421C17.4223 9.69627 17.3542 9.79808 17.2685 9.88384Z"
+                          fill="currentColor" />
+                      </svg>
+                    </div>
+                    <div class="tracking-content">Inbound Box Received<span class="text-muted fw-normal"></span></div>
+                  </div>
+
+                  <div class="tracking-item">
+                    <div class="tracking-icon status-intransit">
+                      <svg class="svg-inline--fa fa-circle fa-w-16" aria-hidden="true" data-prefix="fas"
+                        data-icon="circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
+                        data-fa-i2svg="">
+                        <path fill="currentColor"
+                          d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"></path>
+                      </svg>
+                    </div>
+                    <div class="tracking-content">Inbound Box shipped<span class="text-muted fw-normal"></span></div>
+                  </div>
+                  <div class="tracking-item">
+                    <div class="tracking-icon status-intransit">
+                      <svg class="svg-inline--fa fa-circle fa-w-16" aria-hidden="true" data-prefix="fas"
+                        data-icon="circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
+                        data-fa-i2svg="">
+                        <path fill="currentColor"
+                          d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"></path>
+                      </svg>
+                    </div>
+                    <div class="tracking-content">Outbound Box Reached<span class="text-muted fw-normal"></span></div>
+                  </div>
+                  <div class="tracking-item">
+                    <div class="tracking-icon status-intransit">
+                      <svg class="svg-inline--fa fa-circle fa-w-16" aria-hidden="true" data-prefix="fas"
+                        data-icon="circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
+                        data-fa-i2svg="">
+                        <path fill="currentColor"
+                          d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"></path>
+                      </svg>
+                    </div>
+                    <div class="tracking-content">Box Shipped<span class="text-muted fw-normal">Jan 17, 2024</span>
+                    </div>
+                  </div>
+
+
+                  <div class="tracking-item">
+                    <div class="tracking-icon status-intransit">
+                      <svg class="svg-inline--fa fa-circle fa-w-16" aria-hidden="true" data-prefix="fas"
+                        data-icon="circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
+                        data-fa-i2svg="">
+                        <path fill="currentColor"
+                          d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"></path>
+                      </svg>
+                    </div>
+                    <div class="tracking-content">Reviewed and Approved<span class="text-muted fw-normal">Jan 17,
+                        2024</span></div>
+                  </div>
+                  <div class="tracking-item">
+                    <div class="tracking-icon status-intransit">
+                      <svg class="svg-inline--fa fa-circle fa-w-16" aria-hidden="true" data-prefix="fas"
+                        data-icon="circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
+                        data-fa-i2svg="">
+                        <path fill="currentColor"
+                          d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"></path>
+                      </svg>
+                    </div>
+                    <div class="tracking-content">Client Request Received<span class="text-muted fw-normal">Jan 15,
+                        2024</span></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- End: Tracking -->
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- Bootstrap JS and dependencies -->
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <!-- <script src="js/chart.js"></script> -->
+  <!-- <script src="js/main.js"></script> -->
+  <script>
+    $(document).ready(function () {
+      $('#btn-topsearch').on("click", function () {
+        var jobModal = new bootstrap.Modal(document.getElementById("jobreviewModal"), {});
+        jobModal.show();
+      })
+    })
+
+  </script>
+</body>
+
+</html>
