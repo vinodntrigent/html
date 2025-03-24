@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+   <html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+      <title>Crating &mdash; JN Muldoon</title>
+      <link href="assets/img/favicon.png" rel="icon">
+      
+      <link href="assets/vendor/bootstrap-icons/bootstrap-icons.min.css" rel="stylesheet">
+      <link rel="stylesheet" href="assets/css/styles.css">
+   </head>
+   <body>
+      <div class="login">
+         <img src="assets/img/login-bg.jpg" alt="login image" class="login__img">
+
+         <form action="" class="login__form">
+            <h1 class="login__title"><img src="assets/img/MULDOON-LOGO-KO.png"></h1>
+
+            <div class="login__content">
+               <div class="login__box">
+                  <i class="bi bi-person login__icon"></i>
+
+                  <div class="login__box-input">
+                     <input type="email" class="login__input" id="login-email" placeholder=" ">
+                     <label for="login-email" class="login__label">Email</label>
+                  </div>
+               </div>
+
+               <div class="login__box">
+                  <i class="bi bi-lock login__icon"></i>
+
+                  <div class="login__box-input">
+                     <input type="password" class="login__input" id="login-pass" placeholder=" ">
+                     <label for="login-pass" class="login__label">Password</label>
+                     <i class="bi bi-eye-slash login__eye" id="login-eye"></i>
+                  </div>
+               </div>
+            </div>
+
+            <div class="login__check">
+               <div class="login__check-group">
+                  <input type="checkbox" class="login__check-input" id="login-check">
+                  <label for="login-check" class="login__check-label">Remember me</label>
+               </div>
+
+               <a href="#" class="login__forgot">Forgot Password?</a>
+            </div>
+
+            <button type="button" class="login__button">Login</button>
+
+      
+         </form>
+      </div>
+      <script src="assets/js/jquery.min.js"></script>
+      <script src="assets/js/login.js"></script>
+      <script>
+         $(function () {
+
+            $(".login__button").on("click", function () {
+                  var email = $("#login-email").val();
+                  if (email === "ext@trigent.com") {
+                     window.location.href='cust-dashboard.html'
+                  } else  {
+                     window.location.href='dashboard.html'
+                  }
+               }); 
+               
+               // $(".login__button").on("click", function () {
+               //    var email = $("#login-email").val();
+               //    if (email === "int@trigent.com") {
+               //       window.location.href='dashboard.html'
+               //    } else if (email === "ext@trigent.com") {
+               //       window.location.href='cust-dashboard.html'
+               //    }
+               // }); 
+         });
+      </script>
+   </body>
+</html>
