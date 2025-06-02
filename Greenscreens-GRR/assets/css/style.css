@@ -1,0 +1,487 @@
+@import url("https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+
+body {
+  background-color: #F0F1F5;
+}
+
+.page-container {
+  max-width: 1100px;
+  margin: 0 auto 30px auto;
+  overflow: hidden;
+  box-shadow: 0px 1px 12px 2px rgba(0, 0, 0, 0.19);
+  -webkit-box-shadow: 0px 1px 12px 2px rgba(0, 0, 0, 0.19);
+  -moz-box-shadow: 0px 1px 12px 2px rgba(0, 0, 0, 0.19);
+}
+
+/* General */
+.d-flex {
+  display: flex;
+}
+
+.justify-content-between {
+  justify-content: space-between !important;
+}
+
+.align-items-center {
+  align-items: center !important;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.p-1 {
+  padding: .5rem;
+}
+
+.m-0 {
+  margin: 0 !important;
+}
+
+.p-0 {
+  padding: 0 !important;
+}
+
+.text-green {
+  color: #00a651
+}
+
+.text-blue {
+  color: #4d7fa3
+}
+
+.text-orange {
+  color: #ff5722;
+}
+
+.fw-bold {
+  font-weight: bold;
+  ;
+}
+
+/* Hero Section */
+.hero-section {
+  background: #4d7fa3 url("../img/hero-bkg.jpg") center top no-repeat;
+  background-size: cover;
+  height: 1450px;
+  position: relative;
+}
+
+.hero-content {
+  position: relative;
+  padding-top: 120px;
+  text-align: center;
+}
+
+.orange-plus {
+  color: #ff5722;
+  font-size: 75px;
+}
+
+.logo-link img {
+  width: 400px;
+}
+
+/* Info */
+.info-section {
+  background: #4d7fa3 url("../img/info-bkg.jpg") center top no-repeat;
+  background-size: cover;
+  height: 800px;
+  position: relative;
+  padding-top: 125px;
+}
+
+.info-card {
+  text-align: left;
+  max-width: 750px;
+  margin: 400px auto 0 auto;
+  background-color: #fff;
+  border-radius: 60px;
+  border: 3px solid #000;
+  padding: 50px;
+  box-shadow: -12px -11px 0px -1px rgba(0, 168, 87, 1);
+  -webkit-box-shadow: -12px -11px 0px -1px rgba(0, 168, 87, 1);
+  -moz-box-shadow: -12px -11px 0px -1px rgba(0, 168, 87, 1);
+}
+
+.icon-clone {
+  width: 170px;
+}
+
+.info-card-title {
+  color: #00a651;
+  font-size: 26px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  padding: 15px 0;
+}
+
+.info-card-subtitle {
+  color: #00a651;
+  font-size: 16px;
+  margin-bottom: 15px;
+  font-weight: bold;
+  line-height: 1.5;
+}
+
+.info-card-text {
+  color: #00a651;
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+/* How it works section */
+.how-works-section {
+  position: relative;
+  background-color: #fff;
+  padding: 0 20px 20px;
+  background: #fff url("../img/bg-wave.png") 25px bottom repeat-x;
+}
+
+.how-works-header {
+  color: #fff;
+  font-size: 32px;
+  font-weight: bold;
+  position: absolute;
+  bottom: 110px;
+  width: 100%;
+}
+
+.process-formula {
+  text-align: center;
+  margin-bottom: 30px;
+  padding: 0 20px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.formula-plus {
+  color: #00a651;
+}
+
+.formula-equals {
+  color: #ff5722;
+}
+
+.process-boxes {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.process-box-wrapper {
+  flex: 6;
+}
+
+.process-box {
+
+  background-color: #fff;
+  margin: 0 15px;
+  box-shadow: 0px 0px 21px 4px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0px 0px 21px 4px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0px 0px 21px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+  height: 415px;
+}
+
+
+.process-box:before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 15px;
+}
+
+.process-img-1 {
+  border-bottom: 10px solid #00a651;
+  background-color: #fff;
+  height: 150px
+}
+
+.process-img-2 {
+  border-bottom: 10px solid #4d7fa3;
+  background-color: #6392B5;
+  padding-top: 10px;
+  height: 150px
+}
+
+.process-img-3 {
+  border-bottom: 10px solid #6392B5;
+  background-color: #EA4A25;
+  padding-top: 25px;
+  height: 150px
+}
+
+.process-img {
+  text-align: center;
+  margin-bottom: 15px;
+  height: 150px;
+}
+
+
+.process-subtitle {
+  text-align: center;
+  font-size: 16px;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.process-desc {
+  font-size: 14px;
+  color: #7e7e7e;
+  line-height: 1.4;
+  padding-bottom: 20px;
+}
+
+.process-note {
+  font-size: 14px;
+  color: #7e7e7e;
+}
+
+.process-box ul {
+  margin: auto;
+  padding-left: 15px;
+}
+
+.operation-symbols {
+  display: none;
+}
+
+.op-symbol {
+  flex: 1;
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.plus-symbol {
+  color: #ff5722;
+}
+
+.equals-symbol {
+  color: #ff5722;
+}
+
+.formula-sm, .learn-sm {
+  display: none;
+}
+
+/* Benefits Section */
+.benefits-section {
+  display: flex;
+}
+
+.benefits-left {
+  flex: 1;
+  background-color: #E44626;
+  padding: 150px 20px;
+  color: #fff;
+}
+
+.benefits-heading {
+  font-size: 38px;
+  font-weight: bold;
+  margin: 0 50px;
+  line-height: 1.2;
+  /* font-family: "Red Hat Display", sans-serif; */
+}
+
+.benefits-right {
+  flex: 1;
+  background-color: #fff;
+  padding: 25px 20px;
+  box-shadow: -20px 0px 11px 9px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: -20px 0px 11px 9px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: -20px 0px 11px 9px rgba(0, 0, 0, 0.1);
+}
+
+.benefit-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.benefit-icon {
+  flex: 0 0 50px;
+  text-align: center;
+}
+
+.benefit-icon img {
+  width: 75px;
+}
+
+.benefit-text {
+  flex: 1;
+  padding-left: 15px;
+}
+
+.benefit-title {
+  color: #3b5b74;
+  font-size: 26px;
+  font-weight: normal;
+  margin-bottom: 5px;
+  line-height: 1.1;
+  /* font-family: "Red Hat Display", sans-serif; */
+}
+
+.benefit-desc {
+  color: #3b5b74;
+  font-size: 16px;
+  line-height: 1.1;
+  /* font-family: "Red Hat Display", sans-serif; */
+}
+
+/* Call To Action Section */
+.cta-section {
+  background: #4d7fa3 url("../img/cta-bkg.jpg") center top no-repeat;
+  background-size: cover;
+  height: 575px;
+}
+
+.cta-right {
+  float: right;
+  padding: 80px 65px 20px;
+  width: 50%;
+}
+
+.cta-logo .logo-link img {
+  width: 300px;
+}
+
+.cta-logo {
+  text-align: center;
+  margin-bottom: 165px;
+}
+
+.cta-logo span {
+  font-weight: bold;
+}
+
+.cta-plus {
+  text-align: center;
+  color: #00a651;
+  font-size: 75px;
+  line-height: .8;
+}
+
+.cta-learn-more {
+  text-align: left;
+  color: #fff;
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.cta-contact {
+  text-align: left;
+  color: #fff;
+  font-size: 16px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.cta-contact a {
+  color: #fff;
+  text-decoration: none;
+}
+
+@media (max-width: 1024px) {
+  .page-container {
+    max-width: 900px;
+  }
+
+  .process-box {
+    height: 460px;
+  }
+}
+
+@media (max-width: 767px) {
+  .page-container {
+    max-width: 900px;
+  }
+
+  .process-boxes,
+  .benefits-section,
+  .cta-section {
+    flex-direction: column;
+  }
+
+  .process-box {
+    margin-bottom: 20px;
+  }
+
+
+}
+
+@media (max-width: 500px) {
+  .info-card {
+    max-width: 400px;
+    margin: 50px auto 50px auto;
+    padding: 15px;
+    display: block;
+  }
+
+  .hero-section {
+    height: 990px;
+  }
+
+  .hero-content {
+    padding-top: 75px;
+  }
+
+  .cta-section {
+    height: 425px;
+  }
+
+  .info-section {
+    padding-top: 0;
+  }
+
+  .how-works-header {
+    bottom: 75px;
+  }
+
+  .process-box {
+    height: auto;
+  }
+
+  .cta-logo {
+    margin-bottom: 55px;
+  }
+
+  .cta-logo .logo-link img {
+    width: 160px;
+  }
+
+  .cta-right {
+    padding: 25px 10px 15px;
+  }
+
+  .learn-sm {
+    margin-top: 90px;
+    margin-left: 95px;
+  }
+
+  .formula-sm, .learn-sm {
+    display: block;
+  }
+
+  .learn-sm {
+    display: inline-block;
+  }
+
+  .formula-md, .learn-md {
+    display: none;
+  }
+
+}
