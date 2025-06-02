@@ -12,7 +12,7 @@ body {
 }
 
 .page-container {
-  max-width: 800px;
+  max-width: 1100px;
   margin: 0 auto 30px auto;
   overflow: hidden;
   box-shadow: 0px 1px 12px 2px rgba(0, 0, 0, 0.19);
@@ -61,11 +61,16 @@ body {
   color: #ff5722;
 }
 
+.fw-bold {
+  font-weight: bold;
+  ;
+}
+
 /* Hero Section */
 .hero-section {
   background: #4d7fa3 url("../img/hero-bkg.jpg") center top no-repeat;
   background-size: cover;
-  height: 1010px;
+  height: 1450px;
   position: relative;
 }
 
@@ -84,15 +89,23 @@ body {
   width: 400px;
 }
 
-/* Info Card */
+/* Info */
+.info-section {
+  background: #4d7fa3 url("../img/info-bkg.jpg") center top no-repeat;
+  background-size: cover;
+  height: 800px;
+  position: relative;
+  padding-top: 125px;
+}
+
 .info-card {
   text-align: left;
-  max-width: 630px;
-  margin: 130px auto 0 50px;
+  max-width: 750px;
+  margin: 400px auto 0 auto;
   background-color: #fff;
   border-radius: 60px;
   border: 3px solid #000;
-  padding: 35px;
+  padding: 50px;
   box-shadow: -12px -11px 0px -1px rgba(0, 168, 87, 1);
   -webkit-box-shadow: -12px -11px 0px -1px rgba(0, 168, 87, 1);
   -moz-box-shadow: -12px -11px 0px -1px rgba(0, 168, 87, 1);
@@ -115,6 +128,7 @@ body {
   font-size: 16px;
   margin-bottom: 15px;
   font-weight: bold;
+  line-height: 1.5;
 }
 
 .info-card-text {
@@ -128,16 +142,16 @@ body {
 .how-works-section {
   position: relative;
   background-color: #fff;
-  padding: 20px 0 0;
+  padding: 0 20px 20px;
   background: #fff url("../img/bg-wave.png") 25px bottom repeat-x;
 }
 
 .how-works-header {
   color: #fff;
-  font-size: 25px;
+  font-size: 32px;
   font-weight: bold;
   position: absolute;
-  bottom: 60px;
+  bottom: 110px;
   width: 100%;
 }
 
@@ -160,18 +174,24 @@ body {
 .process-boxes {
   display: flex;
   justify-content: space-between;
-  margin: 0 25px;
+  align-items: center;
+}
+
+.process-box-wrapper {
+  flex: 6;
 }
 
 .process-box {
-  flex: 1;
+
   background-color: #fff;
   margin: 0 15px;
   box-shadow: 0px 0px 21px 4px rgba(0, 0, 0, 0.1);
   -webkit-box-shadow: 0px 0px 21px 4px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 0px 0px 21px 4px rgba(0, 0, 0, 0.1);
   position: relative;
+  height: 415px;
 }
+
 
 .process-box:before {
   content: "";
@@ -182,20 +202,24 @@ body {
   height: 15px;
 }
 
-.process-box:nth-child(1) .process-img {
+.process-img-1 {
   border-bottom: 10px solid #00a651;
+  background-color: #fff;
+  height: 150px
 }
 
-.process-box:nth-child(2) .process-img {
+.process-img-2 {
   border-bottom: 10px solid #4d7fa3;
   background-color: #6392B5;
   padding-top: 10px;
+  height: 150px
 }
 
-.process-box:nth-child(3) .process-img {
+.process-img-3 {
   border-bottom: 10px solid #6392B5;
   background-color: #EA4A25;
   padding-top: 25px;
+  height: 150px
 }
 
 .process-img {
@@ -207,20 +231,20 @@ body {
 
 .process-subtitle {
   text-align: center;
-  font-size: 13px;
+  font-size: 16px;
   margin-bottom: 15px;
   font-weight: bold;
 }
 
 .process-desc {
-  font-size: 12px;
+  font-size: 14px;
   color: #7e7e7e;
   line-height: 1.4;
   padding-bottom: 20px;
 }
 
 .process-note {
-  font-size: 12px;
+  font-size: 14px;
   color: #7e7e7e;
 }
 
@@ -230,11 +254,7 @@ body {
 }
 
 .operation-symbols {
-  display: flex;
-  justify-content: space-between;
-  margin: 0 90px;
-  position: relative;
-  top: -235px;
+  display: none;
 }
 
 .op-symbol {
@@ -252,6 +272,10 @@ body {
   color: #ff5722;
 }
 
+.formula-sm, .learn-sm {
+  display: none;
+}
+
 /* Benefits Section */
 .benefits-section {
   display: flex;
@@ -265,11 +289,11 @@ body {
 }
 
 .benefits-heading {
-  font-size: 28px;
+  font-size: 38px;
   font-weight: bold;
   margin: 0 50px;
   line-height: 1.2;
-  font-family: "Red Hat Display", sans-serif;
+  /* font-family: "Red Hat Display", sans-serif; */
 }
 
 .benefits-right {
@@ -293,7 +317,7 @@ body {
 }
 
 .benefit-icon img {
-  width:75px;
+  width: 75px;
 }
 
 .benefit-text {
@@ -307,35 +331,36 @@ body {
   font-weight: normal;
   margin-bottom: 5px;
   line-height: 1.1;
-  font-family: "Red Hat Display", sans-serif;
+  /* font-family: "Red Hat Display", sans-serif; */
 }
 
 .benefit-desc {
   color: #3b5b74;
   font-size: 16px;
   line-height: 1.1;
-  font-family: "Red Hat Display", sans-serif;
+  /* font-family: "Red Hat Display", sans-serif; */
 }
 
 /* Call To Action Section */
 .cta-section {
   background: #4d7fa3 url("../img/cta-bkg.jpg") center top no-repeat;
   background-size: cover;
-  height: 450px;
+  height: 575px;
 }
 
 .cta-right {
   float: right;
-  padding: 45px 50px 20px;
+  padding: 80px 65px 20px;
+  width: 50%;
 }
 
 .cta-logo .logo-link img {
-  width: 250px;
+  width: 300px;
 }
 
 .cta-logo {
   text-align: center;
-  margin-bottom: 115px;
+  margin-bottom: 165px;
 }
 
 .cta-logo span {
@@ -352,7 +377,7 @@ body {
 .cta-learn-more {
   text-align: left;
   color: #fff;
-  font-size: 22px;
+  font-size: 28px;
   font-weight: bold;
   margin-bottom: 20px;
 }
@@ -360,7 +385,7 @@ body {
 .cta-contact {
   text-align: left;
   color: #fff;
-  font-size: 14px;
+  font-size: 16px;
   margin-bottom: 10px;
   font-weight: bold;
 }
@@ -370,7 +395,20 @@ body {
   text-decoration: none;
 }
 
+@media (max-width: 1024px) {
+  .page-container {
+    max-width: 900px;
+  }
+
+  .process-box {
+    height: 460px;
+  }
+}
+
 @media (max-width: 767px) {
+  .page-container {
+    max-width: 900px;
+  }
 
   .process-boxes,
   .benefits-section,
@@ -382,17 +420,19 @@ body {
     margin-bottom: 20px;
   }
 
-  .operation-symbols {
-    display: none;
-  }
+
 }
 
 @media (max-width: 500px) {
   .info-card {
     max-width: 400px;
-    margin: 40px auto 0;
-    padding: 25px;
+    margin: 50px auto 50px auto;
+    padding: 15px;
     display: block;
+  }
+
+  .hero-section {
+    height: 990px;
   }
 
   .hero-content {
@@ -400,16 +440,23 @@ body {
   }
 
   .cta-section {
-    height: 320px;
+    height: 425px;
+  }
+
+  .info-section {
+    padding-top: 0;
   }
 
   .how-works-header {
-    bottom: 80px;
+    bottom: 75px;
+  }
+
+  .process-box {
+    height: auto;
   }
 
   .cta-logo {
     margin-bottom: 55px;
-    margin-left: 90px;
   }
 
   .cta-logo .logo-link img {
@@ -419,4 +466,22 @@ body {
   .cta-right {
     padding: 25px 10px 15px;
   }
+
+  .learn-sm {
+    margin-top: 90px;
+    margin-left: 95px;
+  }
+
+  .formula-sm, .learn-sm {
+    display: block;
+  }
+
+  .learn-sm {
+    display: inline-block;
+  }
+
+  .formula-md, .learn-md {
+    display: none;
+  }
+
 }
