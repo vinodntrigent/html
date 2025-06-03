@@ -12,7 +12,7 @@ body {
 }
 
 .page-container {
-  max-width: 1100px;
+  max-width: 80%;
   margin: 0 auto 30px auto;
   overflow: hidden;
   box-shadow: 0px 1px 12px 2px rgba(0, 0, 0, 0.19);
@@ -70,7 +70,7 @@ body {
 .hero-section {
   background: #4d7fa3 url("../img/hero-bkg.jpg") center top no-repeat;
   background-size: cover;
-  height: 1450px;
+  height: 1540px;
   position: relative;
 }
 
@@ -325,6 +325,12 @@ body {
   padding-left: 15px;
 }
 
+.benefit-sep {
+  background: #fff url("../img/benefit-sep.png") center center no-repeat;
+  background-size: cover;
+  height: 35px;
+}
+
 .benefit-title {
   color: #3b5b74;
   font-size: 26px;
@@ -394,6 +400,86 @@ body {
   color: #fff;
   text-decoration: none;
 }
+
+
+
+@media (min-width: 1920px) and (max-width : 4000px) {
+  .page-container {
+    max-width: 80%;
+  }
+
+  .hero-section {
+    height: 2560px;
+  }
+
+  .hero-content {
+    padding-top: 350px;
+  }
+
+  .info-card {
+    max-width: 1100px;
+    margin: 820px auto 0 auto;
+    border-radius: 60px;
+  }
+
+  .icon-clone {
+    width: 290px;
+  }
+
+  .info-card-title {
+    font-size: 34px;
+  }
+
+  .info-card-subtitle {
+    font-size: 24px;
+  }
+
+  .info-card-text {
+    font-size: 24px;
+  }
+
+  .how-works-header {
+    bottom: 200px;
+  }
+
+  .process-img-1, .process-img-2, .process-img-3 {
+    height: 250px;
+  }
+  .process-box-wrapper {
+      font-size: 28px;
+  }
+  .process-box {
+    height: 480px;
+  }
+  .process-subtitle {
+    font-size: 22px;
+  }
+  .process-desc {
+    font-size: 18px;
+  }
+  .process-note {
+    font-size: 18px;
+  }
+  .op-symbol {
+    font-size: 60px;
+  }
+  .cta-section {
+    height: 900px;
+  }
+
+  .cta-logo {
+    margin-bottom: 425px;
+  }
+
+  .cta-learn-more {
+    font-size: 34px;
+  }
+
+  .cta-contact {
+    font-size: 28px;
+  }
+}
+
 
 @media (max-width: 1024px) {
   .page-container {
