@@ -403,7 +403,7 @@ body {
 
 
 
-@media (min-width: 1920px) and (max-width : 4000px) {
+@media (min-width: 1700px) and (max-width : 4000px) {
   .page-container {
     max-width: 80%;
   }
