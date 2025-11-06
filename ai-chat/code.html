@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AI Product Assistant</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#4A90E2",
+            "background-light": "#F5F5F5",
+            "background-dark": "#101922",
+          },
+          fontFamily: {
+            "display": ["Inter", "sans-serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="flex h-screen">
+<div class="flex flex-col flex-1">
+<header class="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-background-dark">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-2xl">auto_awesome</span>
+<h1 class="text-xl font-bold text-gray-800 dark:text-white">AI Product Assistant</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="px-4 py-2 text-sm font-medium text-primary border border-primary rounded-lg hover:bg-primary/10">New Chat</button>
+<button class="relative text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white">
+<span class="material-symbols-outlined text-2xl">shopping_cart</span>
+<span class="absolute -top-2 -right-2 flex items-center justify-center w-5 h-5 text-xs font-bold text-white bg-red-500 rounded-full">3</span>
+</button>
+</div>
+</header>
+<main class="flex-1 overflow-y-auto p-6 space-y-6">
+<div class="flex items-end gap-3">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full w-10 h-10 shrink-0" data-alt="AI Assistant's avatar showing a friendly robot" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuABQPSiHPHQ4fbVPVwuAYHtQqOB2MJXu6MD5UUTs6-D6oTa_UgHlonADHJ4du7exwtTV7MV84RK_dIN3JOGlFx_EdDhrr6HJKgassVw5dDudqblYhumhVXZFWrySdktZh7ctQnrAMGfgwLdau89hk5H3WyFom_X3sLnUvHQYanro2vqjgyCQfy8Y7mXWP3xgO5LMYpHB1lFJmuYMi0z90WZRFXtcnCkN4I6r9ZJLkoaos3vOtlQp29k-Xmq6FnccSgbDwoJb0WkkYY');"></div>
+<div class="flex flex-col gap-1">
+<p class="text-xs text-gray-500 dark:text-gray-400">AI Assistant • 10:30 AM</p>
+<div class="max-w-md p-3 bg-white dark:bg-gray-800 rounded-lg rounded-bl-none shadow">
+<p class="text-gray-800 dark:text-gray-200">Hello! What are you looking for today?</p>
+</div>
+</div>
+</div>
+<div class="flex items-end gap-3 justify-end">
+<div class="flex flex-col gap-1 items-end">
+<p class="text-xs text-gray-500 dark:text-gray-400">You • 10:31 AM</p>
+<div class="max-w-md p-3 bg-primary text-white rounded-lg rounded-br-none shadow">
+<p>I'm looking for a new pair of running shoes.</p>
+</div>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full w-10 h-10 shrink-0" data-alt="User's avatar" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDNdePojHTBs8roUdANUp_wDeP1H_HNI7BIP6lMVekS6K3e3NUhzx-R3GA7Z_8fwACrUGwkrHkyyGmuaYkv-A0BpmTCrwexk56XdT6hPUP-R7Z5df-xvy6bYaabZKWYtOpiilNOTn4PGrwQXs7I5s6Gm7AHePSKj6HJMl9SXJazrx8bkcKiZDVhbzM_ty_EMSGhyldjkhBIWeY0hT73Y2X450uL5u11IJNU-8_quE55XbKbTpBAKEgW-2hDTrcl7UiLx576qeGPGRc');"></div>
+</div>
+<div class="flex items-end gap-3">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full w-10 h-10 shrink-0" data-alt="AI Assistant's avatar showing a friendly robot" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC_wN3R9cs0mDCZXN2-Rkv23Kfd56UOKTSsZjgh6oCpXtN25EuF8JE9sNcySrFXCKfpO_WkcCkC1Yc2P-RXxj6qkkxZHblAMXeZLDU1K_0Yk1VezYgTIigACzxCxEWF_E2we6Din1XxGerUNsk7jDD85tRSDng0Gbj98JFUVZelFcCIGtPo36mjkckXNaUeC3ybNCCVfCi9EjwAteKhGAnHGDCOfsIkentqgLCCbdwo5pUKEdpsC8dN4VG5MBD02RtJ0f1FbGD8RL0');"></div>
+<div class="flex flex-col gap-1">
+<p class="text-xs text-gray-500 dark:text-gray-400">AI Assistant • 10:32 AM</p>
+<div class="max-w-md p-3 bg-white dark:bg-gray-800 rounded-lg rounded-bl-none shadow">
+<p class="text-gray-800 dark:text-gray-200">Of course! To help me find the perfect pair, could you tell me what type of running you do? For example, are you a road runner, trail runner, or do you mostly run on a treadmill?</p>
+</div>
+</div>
+</div>
+</main>
+<footer class="p-4 bg-white dark:bg-background-dark border-t border-gray-200 dark:border-gray-700">
+<div class="relative">
+<input class="w-full py-3 pl-4 pr-12 text-sm text-gray-800 dark:text-white bg-gray-100 dark:bg-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" placeholder="Ask me about running shoes..." type="text"/>
+<button class="absolute inset-y-0 right-0 flex items-center justify-center px-4 text-primary hover:text-primary/80">
+<span class="material-symbols-outlined">send</span>
+</button>
+</div>
+</footer>
+</div>
+<aside class="w-96 bg-white dark:bg-gray-900 border-l border-gray-200 dark:border-gray-700 flex flex-col">
+<div class="p-6 border-b border-gray-200 dark:border-gray-700">
+<h2 class="text-lg font-bold text-gray-800 dark:text-white">Recommendations</h2>
+</div>
+<div class="flex-1 overflow-y-auto p-6 space-y-6">
+<div class="flex flex-col gap-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-xl shadow-sm hover:shadow-lg transition-shadow duration-300">
+<div class="flex items-start gap-4">
+<img alt="A pair of red and black running shoes on a solid background." class="w-24 h-24 object-cover rounded-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbwmSbSRwX-6kQ6X60vZOyDadOMOtw_C8jK6g-HIUX71BFaLLxoNBbWFyyHCxd9i6UyPUen15MZTTE7EzheGmjEkKXtdYlcW4M210NHOW0_8xkpC0EJnSPAyi-5G6vH1Fz3HmkQXEcCNc-XdbfNhOLDTHgdv80FuuiUdaiyviJq9cOiJneYxfOoS13Z13PemAhwdyFu_UHeUXrzPPAXXDWLWs5DKegkwqJ03rTcKOqD0dcPI5EBxJpIV77cg-Cwx5cSMZaEUDMQ30"/>
+<div class="flex-1">
+<h3 class="font-bold text-gray-800 dark:text-white">Air Zoom Pegasus</h3>
+<p class="text-sm text-gray-600 dark:text-gray-300 mt-1">A responsive ride for any run, the Pegasus is back to help you soar to new heights.</p>
+</div>
+</div>
+<button class="w-full bg-primary text-white font-medium py-2 px-4 rounded-lg flex items-center justify-center gap-2 hover:bg-primary/90 transition-colors">
+<span class="material-symbols-outlined text-base">add_shopping_cart</span>
+Add to Cart
+</button>
+</div>
+<div class="flex flex-col gap-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-xl shadow-sm hover:shadow-lg transition-shadow duration-300">
+<div class="flex items-start gap-4">
+<img alt="A pair of white and multi-colored running shoes." class="w-24 h-24 object-cover rounded-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmY9s4qRIUh-J20KTpKALXKXTNAHqucbE-tHsq_zjPkzAiU5ZXmy_Vy8UU37E6UATWPTPjk7xRofnjJ_yRG-9s9RRsQv7lyIB3i3teqifIU8DHlq7h1ZyeHeT4PacJ4WRXOVXsRWKct9MO-40pfb72pgCkmYX_rrrQzkHQKaS8WNY5uvHMWoUMZYtGhlW6Sbi3buWWktnBBG9EXL8lqwCeQ62UetpGDJy0qAbZBQpzX2jEipbyks04Nqtt17ejjY34f0JUh-xyyJI"/>
+<div class="flex-1">
+<h3 class="font-bold text-gray-800 dark:text-white">Adrenaline GTS 22</h3>
+<p class="text-sm text-gray-600 dark:text-gray-300 mt-1">Smooth and supportive, this shoe is a runner favorite for a reason. Great for daily training.</p>
+</div>
+</div>
+<button class="w-full bg-primary text-white font-medium py-2 px-4 rounded-lg flex items-center justify-center gap-2 hover:bg-primary/90 transition-colors">
+<span class="material-symbols-outlined text-base">add_shopping_cart</span>
+Add to Cart
+</button>
+</div>
+<div class="flex flex-col gap-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-xl shadow-sm hover:shadow-lg transition-shadow duration-300">
+<div class="flex items-start gap-4">
+<img alt="A pair of stylish blue suede sneakers." class="w-24 h-24 object-cover rounded-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjz-Jd2JBwdeEe7Qq9-jXbFGQY-pKLZHctBLtHdbMvFPj7lv0xlMuiRv0PLi9C4hFUV6r-JXdamIapDGWsdt34J4HMtMxH0ujgRgHZbvRNq2u8o1UkjETzC2DaKsWbQuEvBnAz0ZVlzoZoI4dDNHGciRInBWrXVU0YF9ev7IkzMfs7vUEk1rOHAimMN7LVaDhEgO1K6Yn0JH6M7HUMGGSzdAh9CWK8rcLN8MrRVjWKMe_F6sz1dM7FNa8Kxz7rk3-77OVI00N94rk"/>
+<div class="flex-1">
+<h3 class="font-bold text-gray-800 dark:text-white">Altra Escalante 3</h3>
+<p class="text-sm text-gray-600 dark:text-gray-300 mt-1">A fan favorite for road running, with a responsive yet soft feel for all-day comfort.</p>
+</div>
+</div>
+<button class="w-full bg-primary text-white font-medium py-2 px-4 rounded-lg flex items-center justify-center gap-2 hover:bg-primary/90 transition-colors">
+<span class="material-symbols-outlined text-base">add_shopping_cart</span>
+Add to Cart
+</button>
+</div>
+</div>
+</aside>
+</div>
+</body></html>
