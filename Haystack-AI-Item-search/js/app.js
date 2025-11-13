@@ -328,7 +328,7 @@ function renderCart(container) {
   const footer = createElement('div', 'cart-footer')
   const placeOrder = document.createElement('a')
   placeOrder.className = 'place-order'
-  placeOrder.href = '/place-order.html'
+  placeOrder.href = 'place-order.html'
   placeOrder.textContent = 'Place Order'
   footer.appendChild(placeOrder)
   
