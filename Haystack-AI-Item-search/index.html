@@ -5,10 +5,85 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="./css/styles.css" />
     <title>AI Product Assistant</title>
   </head>
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+    <!-- Admin Dashboard (hidden by default) -->
+    <div id="admin-dashboard" class="container" style="display: none;">
+      <div class="admin-header">
+        <div class="brand">
+          <span class="material-symbols-rounded">admin_panel_settings</span>
+          <span>Admin Dashboard</span>
+        </div>
+        <button class="btn btn-back" id="admin-back-btn">
+          <span class="material-symbols-rounded">arrow_back</span> Back to Assistant
+        </button>
+      </div>
+      
+      <div class="admin-grid">
+        <div class="admin-section">
+          <h2>Basic Monitoring</h2>
+          <div class="metrics-grid" id="metrics-grid">
+            <!-- Metrics will be populated by JS -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main App Container -->
+    <div id="app-container" class="container">
+      <div id="main-grid" class="main-grid">
+        <!-- Chat Panel -->
+        <div>
+          <div class="panel chat-panel">
+            <div class="chat-header">
+              <div class="app-header">
+                <div class="brand">
+                  <img src="/images/momar-haystack-icon.png" alt="logo" class="logo" />
+                  <span>AI Product Assistant</span>
+                </div>
+                <div class="tools">
+                  <button class="btn" id="admin-btn">Admin Dashboard</button>
+                  <button class="btn" id="new-chat-btn">New Chat</button>
+                </div>
+              </div>
+              <button class="mobile-rec-btn" id="mobile-rec-btn" style="display: none;" aria-label="View Recommendations">
+                <span class="material-symbols-rounded">shopping_bag</span>
+                <span class="badge" id="mobile-cart-badge" style="display: none;"></span>
+              </button>
+            </div>
+            <div class="messages" id="messages">
+              <!-- Messages will be populated by JS -->
+            </div>
+            <div class="composer">
+              <div class="prompt-hints" id="prompt-hints" style="display: none;" role="listbox">
+                <!-- Hints will be populated by JS -->
+              </div>
+              <textarea class="input" id="message-input" rows="3" placeholder="Ask anything ..."></textarea>
+              <button class="icon-btn" id="mic-btn" aria-label="Voice input">
+                <span class="material-symbols-rounded">mic</span>
+              </button>
+              <button class="icon-btn primary" id="send-btn" aria-label="Send">
+                <span class="material-symbols-rounded">send</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Aside (Recommendations/Cart) - Desktop -->
+        <aside id="aside-desktop">
+          <!-- Recommendations or Cart will be shown here by JS -->
+        </aside>
+      </div>
+
+      <!-- Mobile Offcanvas -->
+      <div class="offcanvas-overlay" id="offcanvas-overlay" style="display: none;"></div>
+      <div class="offcanvas" id="offcanvas">
+        <!-- Mobile Recommendations or Cart will be shown here by JS -->
+      </div>
+    </div>
+
+    <script src="./js/app.js"></script>
   </body>
 </html>
