@@ -484,7 +484,8 @@ function renderApp() {
   
   // Update mobile rec button visibility
   if (AppState.showRecs) {
-    mobileRecBtn.style.display = 'flex'
+    // mobileRecBtn.style.display = 'flex'
+     mobileRecBtn.style.display = 'none'
     const cartCount = getCartCount()
     if (cartCount > 0) {
       mobileCartBadge.textContent = cartCount
