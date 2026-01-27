@@ -5,14 +5,14 @@ const AppState = {
     { role: 'assistant', text: 'Hello! What are you looking for today?' }
   ],
   products: [
-    { id: '20456', title: 'COMPREHENSIVE GLOVE PROGRAM', description: 'Disposable, Work, and Industrial Gloves', image: 'images/glovesprogram_catalogimage.png', quantity: 1, price: 100.00 },
-    { id: '2551', title: 'FLEET TREAT™', description: 'Ultra-Concentrated, Multi-Functional Diesel Fuel Additive', image: 'images/fleettreat_catalog_image.png', quantity: 1, price: 536.20 },
-    { id: '20064', title: 'TITAN TACK™', description: 'Heavy-Duty, Moly-Fortified Aluminum Complex Grease', image: 'images/titantack2_catalog_image.png', quantity: 1, price: 520.00 },
-    { id: '20165', title: 'TITAN SEIZE NOT™ PASTE', description: 'Copper and Graphite Fortified, High-Performance Anti-Seize', image: 'images/titanseizenotpaste_catalog_image.png', quantity: 1, price: 110.00 },
-    { id: '2478', title: 'NUTCRACKER PLUS™ AEROSOL', description: 'High-Performance Penetrating Lubricant', image: 'images/nutcrackerplusaerosol_catalog_image.png', quantity: 1, price: 200.00 },
-    { id: '2541', title: 'BRUTE™', description: 'Hyper-Concentrated Truck, Trailer, and Car Wash', image: 'images/brute_catalog_image.png', quantity: 1, price: 400.00 },
-    { id: '5737', title: 'BOA WRAP', description: 'Cable, Wire, and Hose Abrasion Protection Wrap', image: 'images/boawrap__catalog_.png', quantity: 1, price: 90.00 },
-    { id: '2484', title: 'PYTHON FUSION TAPE', description: 'Cable, Hose, and Wire Repair Tape', image: 'images/python__catalog_.png', quantity: 1, price: 50.00 },
+    { id: '20456', title: 'COMPREHENSIVE GLOVE PROGRAM', description: 'Disposable, Work, and Industrial Gloves', image: '/images/glovesprogram_catalogimage.png', quantity: 1, price: 100.00 },
+    { id: '2551', title: 'FLEET TREAT™', description: 'Ultra-Concentrated, Multi-Functional Diesel Fuel Additive', image: '/images/fleettreat_catalog_image.png', quantity: 1, price: 536.20 },
+    { id: '20064', title: 'TITAN TACK™', description: 'Heavy-Duty, Moly-Fortified Aluminum Complex Grease', image: '/images/titantack2_catalog_image.png', quantity: 1, price: 520.00 },
+    { id: '20165', title: 'TITAN SEIZE NOT™ PASTE', description: 'Copper and Graphite Fortified, High-Performance Anti-Seize', image: '/images/titanseizenotpaste_catalog_image.png', quantity: 1, price: 110.00 },
+    { id: '2478', title: 'NUTCRACKER PLUS™ AEROSOL', description: 'High-Performance Penetrating Lubricant', image: '/images/nutcrackerplusaerosol_catalog_image.png', quantity: 1, price: 200.00 },
+    { id: '2541', title: 'BRUTE™', description: 'Hyper-Concentrated Truck, Trailer, and Car Wash', image: '/images/brute_catalog_image.png', quantity: 1, price: 400.00 },
+    { id: '5737', title: 'BOA WRAP', description: 'Cable, Wire, and Hose Abrasion Protection Wrap', image: '/images/boawrap__catalog_.png', quantity: 1, price: 90.00 },
+    { id: '2484', title: 'PYTHON FUSION TAPE', description: 'Cable, Hose, and Wire Repair Tape', image: '/images/python__catalog_.png', quantity: 1, price: 50.00 },
   ],
   cart: {},
   showRecs: false,
@@ -200,8 +200,16 @@ function renderRecommendations(container) {
     const meta = createElement('div', 'meta')
     const titleEl = createElement('div', 'title', item.title)
     const desc = createElement('div', 'desc', item.description)
-    const selectedOption = AppState.selectedOptions[item.id] || options[0]
-    const currentPrice = getPriceForOption(item.id, selectedOption, item.price)
+    
+    // Initialize selectedOptions as array if not exists
+    if (!Array.isArray(AppState.selectedOptions[item.id])) {
+      AppState.selectedOptions[item.id] = []
+    }
+    const selectedOptions = AppState.selectedOptions[item.id]
+    
+    // Calculate price based on first selected option, or first option if none selected
+    const firstSelected = selectedOptions.length > 0 ? selectedOptions[0] : options[0]
+    const currentPrice = getPriceForOption(item.id, firstSelected, item.price)
     const price = createElement('div', 'price', '')
     price.innerHTML = `Unit Price: <strong>${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(currentPrice)}</strong>`
     
@@ -214,56 +222,48 @@ function renderRecommendations(container) {
     
     const ctaRow = createElement('div', 'cta-row')
     
-    if (AppState.activeIds.has(item.id)) {
-      const stepper = createElement('div', 'stepper')
-      const decBtn = createElement('button', '', '')
-      decBtn.innerHTML = '<span class="material-symbols-rounded">remove</span>'
-      decBtn.addEventListener('click', () => {
-        handleDec(item.id)
+    const optionList = createElement('div', 'option-list')
+    options.forEach(opt => {
+      const optionBtn = createElement('button', 'option-btn', '')
+      optionBtn.textContent = opt
+      
+      const isSelected = selectedOptions.includes(opt)
+      if (isSelected) {
+        optionBtn.classList.add('active')
+        // Add tick indicator
+        const tick = createElement('span', 'tick-indicator', '')
+        tick.innerHTML = '<span class="material-symbols-rounded">check</span>'
+        optionBtn.appendChild(tick)
+      }
+      
+      optionBtn.addEventListener('click', () => {
+        const currentSelected = AppState.selectedOptions[item.id] || []
+        if (currentSelected.includes(opt)) {
+          // Remove from selection
+          AppState.selectedOptions[item.id] = currentSelected.filter(o => o !== opt)
+          // Decrease cart count
+          if (AppState.cart[item.id] > 0) {
+            AppState.cart[item.id] = Math.max(0, AppState.cart[item.id] - 1)
+            if (AppState.cart[item.id] === 0) {
+              delete AppState.cart[item.id]
+              AppState.activeIds.delete(item.id)
+            }
+          }
+        } else {
+          // Add to selection
+          AppState.selectedOptions[item.id] = [...currentSelected, opt]
+          // Increase cart count
+          AppState.cart[item.id] = (AppState.cart[item.id] || 0) + 1
+          if (!AppState.activeIds.has(item.id) && AppState.cart[item.id] > 0) {
+            AppState.activeIds.add(item.id)
+          }
+        }
         renderApp()
       })
-      
-      const qty = createElement('span', '', String(item.quantity))
-      
-      const incBtn = createElement('button', '', '')
-      incBtn.innerHTML = '<span class="material-symbols-rounded">add</span>'
-      incBtn.addEventListener('click', () => {
-        handleInc(item.id)
-        renderApp()
-      })
-      
-      stepper.appendChild(decBtn)
-      stepper.appendChild(qty)
-      stepper.appendChild(incBtn)
-      ctaRow.appendChild(stepper)
-    } else {
-      const optionSelect = createElement('div', 'option-select')
-      const select = document.createElement('select')
-      select.className = 'product-select'
-      select.value = selectedOption
-      select.addEventListener('change', (e) => {
-        AppState.selectedOptions[item.id] = e.target.value
-        renderApp()
-      })
-      options.forEach(opt => {
-        const option = document.createElement('option')
-        option.value = opt
-        option.textContent = opt
-        select.appendChild(option)
-      })
-      optionSelect.appendChild(select)
-      
-      const addBtn = createElement('button', 'add', '')
-      addBtn.innerHTML = '<span class="material-symbols-rounded">add_shopping_cart</span>'
-      addBtn.addEventListener('click', () => {
-        AppState.activeIds.add(item.id)
-        handleAdd(item.id)
-        renderApp()
-      })
-      
-      ctaRow.appendChild(optionSelect)
-      ctaRow.appendChild(addBtn)
-    }
+      optionList.appendChild(optionBtn)
+    })
+    
+    ctaRow.appendChild(optionList)
     
     rec.appendChild(recRow)
     rec.appendChild(ctaRow)
@@ -314,7 +314,49 @@ function renderCart(container) {
       
       const meta = createElement('div', 'meta')
       const title = createElement('div', 'title', it.title)
-      const desc = createElement('div', 'desc', `Qty: ${AppState.cart[it.id]}`)
+      
+      // Get selected options for this item
+      const selectedOptions = AppState.selectedOptions[it.id] || []
+      const desc = createElement('div', 'desc', '')
+      
+      if (selectedOptions.length > 0) {
+        const optionsList = createElement('div', 'selected-options')
+        selectedOptions.forEach((opt, index) => {
+          const optionItem = createElement('div', 'option-item')
+          const optionText = createElement('span', '', opt)
+          optionItem.appendChild(optionText)
+          
+          const trashBtn = createElement('button', 'trash-btn', '')
+          trashBtn.setAttribute('aria-label', 'Remove item')
+          trashBtn.innerHTML = '<span class="material-symbols-rounded">delete</span>'
+          trashBtn.addEventListener('click', () => {
+            // Remove this option from selected options
+            AppState.selectedOptions[it.id] = selectedOptions.filter(o => o !== opt)
+            
+            // Decrease cart count
+            if (AppState.cart[it.id] > 0) {
+              AppState.cart[it.id] = Math.max(0, AppState.cart[it.id] - 1)
+              if (AppState.cart[it.id] === 0) {
+                delete AppState.cart[it.id]
+                delete AppState.selectedOptions[it.id]
+                AppState.activeIds.delete(it.id)
+              }
+            }
+            
+            renderApp()
+          })
+          
+          optionItem.appendChild(trashBtn)
+          if (index < selectedOptions.length - 1) {
+            optionItem.style.marginBottom = '4px'
+          }
+          optionsList.appendChild(optionItem)
+        })
+        desc.appendChild(optionsList)
+      } else {
+        desc.textContent = 'No options selected'
+      }
+      
       meta.appendChild(title)
       meta.appendChild(desc)
       
@@ -328,7 +370,7 @@ function renderCart(container) {
   const footer = createElement('div', 'cart-footer')
   const placeOrder = document.createElement('a')
   placeOrder.className = 'place-order'
-  placeOrder.href = 'place-order.html'
+  placeOrder.href = '/place-order.html'
   placeOrder.textContent = 'Place Order'
   footer.appendChild(placeOrder)
   
@@ -484,8 +526,7 @@ function renderApp() {
   
   // Update mobile rec button visibility
   if (AppState.showRecs) {
-    // mobileRecBtn.style.display = 'flex'
-     mobileRecBtn.style.display = 'none'
+    mobileRecBtn.style.display = 'flex'
     const cartCount = getCartCount()
     if (cartCount > 0) {
       mobileCartBadge.textContent = cartCount
