@@ -64,6 +64,24 @@ function getCartCount() {
   return Object.values(AppState.cart).reduce((a, b) => a + b, 0)
 }
 
+// Normalize selectedOptions to array of { option, quantity } (supports legacy string array)
+function getSelectedOptionsWithQuantity(productId) {
+  const raw = AppState.selectedOptions[productId] || []
+  return raw.map(x => typeof x === 'string' ? { option: x, quantity: 1 } : x)
+}
+
+function setSelectedOptionsWithQuantity(productId, items) {
+  if (items.length === 0) {
+    delete AppState.selectedOptions[productId]
+    delete AppState.cart[productId]
+    AppState.activeIds.delete(productId)
+  } else {
+    AppState.selectedOptions[productId] = items
+    AppState.cart[productId] = items.reduce((sum, x) => sum + (x.quantity || 1), 0)
+    if (AppState.cart[productId] > 0) AppState.activeIds.add(productId)
+  }
+}
+
 function getVisibleProducts() {
   return AppState.products.filter(p => {
     if (p.title === 'COMPREHENSIVE GLOVE PROGRAM') {
@@ -201,14 +219,10 @@ function renderRecommendations(container) {
     const titleEl = createElement('div', 'title', item.title)
     const desc = createElement('div', 'desc', item.description)
     
-    // Initialize selectedOptions as array if not exists
-    if (!Array.isArray(AppState.selectedOptions[item.id])) {
-      AppState.selectedOptions[item.id] = []
-    }
-    const selectedOptions = AppState.selectedOptions[item.id]
+    const selectedOptions = getSelectedOptionsWithQuantity(item.id)
     
     // Calculate price based on first selected option, or first option if none selected
-    const firstSelected = selectedOptions.length > 0 ? selectedOptions[0] : options[0]
+    const firstSelected = selectedOptions.length > 0 ? selectedOptions[0].option : options[0]
     const currentPrice = getPriceForOption(item.id, firstSelected, item.price)
     const price = createElement('div', 'price', '')
     price.innerHTML = `Unit Price: <strong>${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(currentPrice)}</strong>`
@@ -227,37 +241,27 @@ function renderRecommendations(container) {
       const optionBtn = createElement('button', 'option-btn', '')
       optionBtn.textContent = opt
       
-      const isSelected = selectedOptions.includes(opt)
+      const isSelected = selectedOptions.some(x => x.option === opt)
       if (isSelected) {
         optionBtn.classList.add('active')
-        // Add tick indicator
         const tick = createElement('span', 'tick-indicator', '')
         tick.innerHTML = '<span class="material-symbols-rounded">check</span>'
         optionBtn.appendChild(tick)
       }
       
       optionBtn.addEventListener('click', () => {
-        const currentSelected = AppState.selectedOptions[item.id] || []
-        if (currentSelected.includes(opt)) {
-          // Remove from selection
-          AppState.selectedOptions[item.id] = currentSelected.filter(o => o !== opt)
-          // Decrease cart count
-          if (AppState.cart[item.id] > 0) {
-            AppState.cart[item.id] = Math.max(0, AppState.cart[item.id] - 1)
-            if (AppState.cart[item.id] === 0) {
-              delete AppState.cart[item.id]
-              AppState.activeIds.delete(item.id)
-            }
+        const items = getSelectedOptionsWithQuantity(item.id)
+        const idx = items.findIndex(x => x.option === opt)
+        if (idx >= 0) {
+          if (items[idx].quantity <= 1) {
+            items.splice(idx, 1)
+          } else {
+            items[idx].quantity -= 1
           }
         } else {
-          // Add to selection
-          AppState.selectedOptions[item.id] = [...currentSelected, opt]
-          // Increase cart count
-          AppState.cart[item.id] = (AppState.cart[item.id] || 0) + 1
-          if (!AppState.activeIds.has(item.id) && AppState.cart[item.id] > 0) {
-            AppState.activeIds.add(item.id)
-          }
+          items.push({ option: opt, quantity: 1 })
         }
+        setSelectedOptionsWithQuantity(item.id, items)
         renderApp()
       })
       optionList.appendChild(optionBtn)
@@ -315,34 +319,61 @@ function renderCart(container) {
       const meta = createElement('div', 'meta')
       const title = createElement('div', 'title', it.title)
       
-      // Get selected options for this item
-      const selectedOptions = AppState.selectedOptions[it.id] || []
+      // Get selected options for this item (array of { option, quantity })
+      const selectedOptions = getSelectedOptionsWithQuantity(it.id)
       const desc = createElement('div', 'desc', '')
       
       if (selectedOptions.length > 0) {
         const optionsList = createElement('div', 'selected-options')
-        selectedOptions.forEach((opt, index) => {
+        selectedOptions.forEach((entry, index) => {
           const optionItem = createElement('div', 'option-item')
-          const optionText = createElement('span', '', opt)
+          const optionText = createElement('span', 'option-item-label', entry.option)
           optionItem.appendChild(optionText)
+          
+          const stepper = createElement('div', 'option-item-stepper')
+          const decBtn = createElement('button', 'stepper-btn', '')
+          decBtn.setAttribute('aria-label', 'Decrease quantity')
+          decBtn.innerHTML = '<span class="material-symbols-rounded">remove</span>'
+          decBtn.addEventListener('click', () => {
+            const items = getSelectedOptionsWithQuantity(it.id)
+            const idx = items.findIndex(x => x.option === entry.option)
+            if (idx >= 0) {
+              if (items[idx].quantity <= 1) {
+                items.splice(idx, 1)
+              } else {
+                items[idx].quantity -= 1
+              }
+              setSelectedOptionsWithQuantity(it.id, items)
+              renderApp()
+            }
+          })
+          
+          const qtySpan = createElement('span', 'option-item-qty', String(entry.quantity))
+          
+          const incBtn = createElement('button', 'stepper-btn', '')
+          incBtn.setAttribute('aria-label', 'Increase quantity')
+          incBtn.innerHTML = '<span class="material-symbols-rounded">add</span>'
+          incBtn.addEventListener('click', () => {
+            const items = getSelectedOptionsWithQuantity(it.id)
+            const idx = items.findIndex(x => x.option === entry.option)
+            if (idx >= 0) {
+              items[idx].quantity = (items[idx].quantity || 1) + 1
+              setSelectedOptionsWithQuantity(it.id, items)
+              renderApp()
+            }
+          })
+          
+          stepper.appendChild(decBtn)
+          stepper.appendChild(qtySpan)
+          stepper.appendChild(incBtn)
+          optionItem.appendChild(stepper)
           
           const trashBtn = createElement('button', 'trash-btn', '')
           trashBtn.setAttribute('aria-label', 'Remove item')
           trashBtn.innerHTML = '<span class="material-symbols-rounded">delete</span>'
           trashBtn.addEventListener('click', () => {
-            // Remove this option from selected options
-            AppState.selectedOptions[it.id] = selectedOptions.filter(o => o !== opt)
-            
-            // Decrease cart count
-            if (AppState.cart[it.id] > 0) {
-              AppState.cart[it.id] = Math.max(0, AppState.cart[it.id] - 1)
-              if (AppState.cart[it.id] === 0) {
-                delete AppState.cart[it.id]
-                delete AppState.selectedOptions[it.id]
-                AppState.activeIds.delete(it.id)
-              }
-            }
-            
+            const items = getSelectedOptionsWithQuantity(it.id).filter(x => x.option !== entry.option)
+            setSelectedOptionsWithQuantity(it.id, items)
             renderApp()
           })
           
