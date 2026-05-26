@@ -914,6 +914,51 @@
   }
   .floating-bar-btn:hover { opacity: 0.8; }
 
+  /* ───── SCROLL TO TOP ───── */
+  .scroll-top {
+    position: fixed;
+    right: 24px;
+    bottom: 28px;
+    z-index: 91;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: rgba(13,21,32,0.92);
+    backdrop-filter: blur(12px);
+    color: var(--cyan);
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(12px);
+    transition: opacity 0.25s, visibility 0.25s, transform 0.25s, border-color 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.35);
+  }
+
+  .scroll-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .scroll-top:hover {
+    border-color: rgba(0,200,255,0.35);
+    box-shadow: 0 8px 32px rgba(0,200,255,0.15);
+  }
+
+  .scroll-top svg {
+    width: 18px;
+    height: 18px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
   /* ───── FOOTER ───── */
   footer {
     background: var(--void);
@@ -1760,7 +1805,7 @@
     <li><a href="#">Privacy</a></li>
     <li><a href="#">Contact</a></li>
   </ul>
-  <div style="font-family:'Space Mono',monospace;font-size:10px;color:var(--muted);">© 2025 Trigent</div>
+  <div style="font-family:'Space Mono',monospace;font-size:10px;color:var(--muted);">© 2026 Trigent</div>
 </footer>
 
 <!-- Floating CTA Bar -->
@@ -1769,6 +1814,10 @@
     Validate My AI Biz Case
   </button>
 </div>
+
+<button type="button" class="scroll-top" id="scroll-top" aria-label="Scroll to top" title="Back to top">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
 
 <script>
 /* ── HLS VIDEO ── */
@@ -2377,6 +2426,19 @@ function submitEmail(e) {
   }, { threshold: 0.3 });
 
   document.querySelectorAll('.tab-content').forEach(t => barObserver.observe(t));
+
+  // Scroll to top
+  (function() {
+    const btn = document.getElementById('scroll-top');
+    if (!btn) return;
+    const showAfter = 400;
+    const toggle = () => btn.classList.toggle('visible', window.scrollY > showAfter);
+    window.addEventListener('scroll', toggle, { passive: true });
+    toggle();
+    btn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  })();
 </script>
 </body>
 </html>
