@@ -1,0 +1,5 @@
+# Large media — use Git LFS or host externally (GitHub limit: 100 MB)
+*.mp4
+*.mov
+*.avi
+*.mkv
